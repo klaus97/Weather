@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="NO_INTERNET">No Internet Connection...</string>
+    <string name="DOWNLOAD">Download...</string>
+    <string name="GRANT_GPS">Per continuare, attiva la geolocalizzazione del dispositivo...</string>
+    <string name="OK">OK</string>
+    <string name="NO_THX">NO,GRAZIE</string>
+    <string name="NO">NO</string>
+    <string name="todo">TODO</string>
+</resources>
