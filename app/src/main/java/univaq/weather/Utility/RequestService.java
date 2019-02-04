@@ -15,18 +15,17 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
 import com.android.volley.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import univaq.weather.Activity.MainActivity;
 
+import univaq.weather.Activity.MainActivity;
+import univaq.weather.Activity.MapsActivity;
 import univaq.weather.Database.RDatabase;
 import univaq.weather.Database.WeatherDB;
 import univaq.weather.R;
@@ -80,6 +79,7 @@ public class RequestService extends Service {
         builder.setAutoCancel(true);
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(), 0, intent, 0);
 
@@ -168,10 +168,6 @@ public class RequestService extends Service {
                                 @Override
                                 public void run() {
                                     wb = RDatabase.getInstance(getApplicationContext()).weatherDAO().getWeather();
-
-                                    for(int i=0;i<wb.size();i++) {
-                                        Log.d("DATABASE", wb.get(i).getWeath());
-                                    }
                                 }
                             }).start();
 

@@ -183,7 +183,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             imgdate1.setImageResource(R.drawable.rain_icon);
         }else if(dataw.get(0).getNowweather().equals("Snow")) {
             imgdate1.setImageResource(R.drawable.snow_icon);
-        }else if(dataw.get(0).getNowweather().equals("Clouds")){
+        }else if(dataw.get(0).getNowweather().equals("Clouds")) {
             imgdate1.setImageResource(R.drawable.cloud_icon);
         }else{
             imgdate1.setImageResource(R.drawable.sun_icon);
@@ -196,7 +196,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             imgdate2.setImageResource(R.drawable.rain_icon);
         }else if(dataw.get(1).getNowweather().equals("Snow")) {
             imgdate2.setImageResource(R.drawable.snow_icon);
-        }else if(dataw.get(1).getNowweather().equals("Clouds")){
+        }else if(dataw.get(1).getNowweather().equals("Clouds")) {
             imgdate2.setImageResource(R.drawable.cloud_icon);
         }else{
             imgdate2.setImageResource(R.drawable.sun_icon);
@@ -209,7 +209,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             imgdate3.setImageResource(R.drawable.rain_icon);
         }else if(dataw.get(2).getNowweather().equals("Snow")) {
             imgdate3.setImageResource(R.drawable.snow_icon);
-        }else if(dataw.get(2).getNowweather().equals("Clouds")){
+        }else if(dataw.get(2).getNowweather().equals("Clouds")) {
             imgdate3.setImageResource(R.drawable.cloud_icon);
         }else{
             imgdate3.setImageResource(R.drawable.sun_icon);
@@ -222,7 +222,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             imgdate4.setImageResource(R.drawable.rain_icon);
         }else if(dataw.get(3).getNowweather().equals("Snow")) {
             imgdate4.setImageResource(R.drawable.snow_icon);
-        }else if(dataw.get(3).getNowweather().equals("Clouds")){
+        }else if(dataw.get(3).getNowweather().equals("Clouds")) {
             imgdate4.setImageResource(R.drawable.cloud_icon);
         }else{
             imgdate4.setImageResource(R.drawable.sun_icon);
@@ -235,7 +235,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             imgdate5.setImageResource(R.drawable.rain_icon);
         }else if(dataw.get(4).getNowweather().equals("Snow")) {
             imgdate5.setImageResource(R.drawable.snow_icon);
-        }else if(dataw.get(4).getNowweather().equals("Clouds")){
+        }else if(dataw.get(4).getNowweather().equals("Clouds")) {
             imgdate5.setImageResource(R.drawable.cloud_icon);
         }else{
             imgdate5.setImageResource(R.drawable.sun_icon);

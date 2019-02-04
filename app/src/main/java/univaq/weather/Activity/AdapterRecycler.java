@@ -47,8 +47,10 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
             viewHolder.imageweath.setImageResource(R.drawable.rain_icon);
         }else if(weather.getNowweather().equals("Snow")) {
             viewHolder.imageweath.setImageResource(R.drawable.snow_icon);
-        }else if(weather.getNowweather().equals("Clouds")){
+        }else if(weather.getNowweather().equals("Clouds")) {
             viewHolder.imageweath.setImageResource(R.drawable.cloud_icon);
+        }else if(weather.getNowweather().equals("Fog")) {
+                viewHolder.imageweath.setImageResource(R.drawable.fog_icon);
         }else{
             viewHolder.imageweath.setImageResource(R.drawable.sun_icon);
         }

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private MyListener listener = new MyListener();
     private SwipeRefreshLayout swipeRefreshLayout;
     private static DecimalFormat df2 = new DecimalFormat(".##");
-    Integer i=0;
+    static Integer i;
     final WeatherDB w= new WeatherDB();
     List<WeatherDB> wb= new ArrayList<>();
 
@@ -132,7 +132,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         SaveCityDB(dataw);
 
-        if(i == 0) {
+        if(i == null) {
+            i=1;
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.SECOND, 10);
 
@@ -146,9 +147,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
             //for 30 mint 60*60*1000
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-                    60 * 60 * 1000, pintent);
+                    5 * 5 * 1000, pintent);
             startService(new Intent(getBaseContext(), RequestService.class));
-            i++;
         }
     }
 
@@ -368,8 +368,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     public void SaveCityDB(List<Weather> dataw){
         //controllo se la città è gia presente nel db, se non è presente l'aggiungo al db
-
-        //carico i dati presenti nel db in wb
         new Thread(new Runnable() {
             @Override
             public void run() {
