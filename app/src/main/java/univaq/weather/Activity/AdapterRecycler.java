@@ -1,18 +1,18 @@
 package univaq.weather.Activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.List;
+import univaq.weather.Database.RDatabase;
 import univaq.weather.Model.Weather;
 import univaq.weather.R;
 
@@ -20,9 +20,10 @@ import univaq.weather.R;
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHolder> {
 
     private List<Weather> dataw;
+    Context context;
 
-    public AdapterRecycler(List<Weather> dataw){
-        this.dataw = dataw;
+    public AdapterRecycler(List<Weather> dataw, Context context){
+        this.dataw = dataw ; this.context=context;
     }
 
     @NonNull
@@ -71,6 +72,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
         ImageView imageweath;
         TextView windv;
         TextView presval;
+        Button button;
 
         ViewHolder(@NonNull View view) {
             super(view);
@@ -81,6 +83,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
             imageweath=view.findViewById(R.id.imageweath);
             windv=view.findViewById(R.id.windv);
             presval=view.findViewById(R.id.presval);
+            button=view.findViewById(R.id.btnsave);
 
             // Define the click event on item
             view.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +107,23 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
 
                    // Log.d("ORA",weather.getLocaltime().toString());
                     v.getContext().startActivity(intent);
+
+                }
+            });
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Weather weather = dataw.get(getAdapterPosition());
+                    Toast.makeText(context, "Città aggiunta ai preferiti!", Toast.LENGTH_LONG).show();
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            RDatabase.getInstance(context).weatherDAO().setprefer(weather.getId(),1);
+                        }
+                    }).start();
 
                 }
             });

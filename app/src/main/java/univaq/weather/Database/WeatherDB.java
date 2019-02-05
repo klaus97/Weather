@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 
 @Entity(tableName = "weather")
@@ -34,9 +35,12 @@ public class WeatherDB {
     @ColumnInfo(name = "pressure")
     private Integer pres;
 
+    @ColumnInfo(name = "favourite")
+    private boolean pref;
+
     public WeatherDB(){}
 
-    public WeatherDB(String id, double lat, double lon, String city, double TP,String nw,double wind,Integer pres){
+    public WeatherDB(String id, double lat, double lon, String city, double TP,String nw,double wind,Integer pres,boolean pref){
         this.id=id;
         this.latitudine = lat;
         this.longitudine = lon;
@@ -45,6 +49,7 @@ public class WeatherDB {
         this.weath=nw;
         this.wind=wind;
         this.pres=pres;
+        this.pref=pref;
     }
 
     public String getId() {
@@ -111,6 +116,11 @@ public class WeatherDB {
         this.pres = pres;
     }
 
+    public boolean getPref() {
+        return pref;
+    }
 
-
+    public void setPref(boolean pref) {
+        this.pref = pref;
+    }
 }

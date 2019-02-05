@@ -26,4 +26,13 @@ public interface WeatherDAO {
 
     @Query("SELECT * FROM weather where id=:id")
     public List<WeatherDB> check(String id);
+
+    @Query("UPDATE weather SET favourite=:f where id=:id")
+    public void setprefer(String id,Integer f);
+
+    @Query("SELECT * FROM weather WHERE favourite=1")
+    public List<WeatherDB> getFavourite();
+
+    @Query("SELECT * FROM weather ")
+    public List<WeatherDB> getCity();
 }

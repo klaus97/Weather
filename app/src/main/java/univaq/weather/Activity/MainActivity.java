@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             Toast.makeText(MainActivity.this, R.string.NO_INTERNET, Toast.LENGTH_SHORT).show();
         }
 
-        adapter = new AdapterRecycler(dataw);
+        adapter = new AdapterRecycler(dataw,getApplicationContext());
         RecyclerView list = findViewById(R.id.main_list);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
@@ -83,7 +83,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "DEVELOP BY ME", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "LISTA PREFERITI", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,FavouriteActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
 
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         SaveCityDB(dataw);
 
-        if(i == null) {
+        if(i == null && lastLocation!=null) {
             i=1;
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.SECOND, 10);

@@ -23,10 +23,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import univaq.weather.Model.Weather;
@@ -96,6 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         String datee = item.getString("dt_txt");
                         LocalDate tempdate=LocalDate.parse(datee,formatterinput);
                         String fdatee=formatteroutput.format(tempdate);
+
 
                         //controllo se ho preso i dati di 5 giorni se si esco dal ciclo
                         if(j==5){

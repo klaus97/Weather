@@ -38,6 +38,7 @@ public class RequestService extends Service {
     List<WeatherDB> w= new ArrayList<>();
     List<WeatherDB> wb=new ArrayList<>();
 
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -55,7 +56,13 @@ public class RequestService extends Service {
         location.setLatitude(latitude);
         location.setLongitude(longitude);
 
-        DownloadData(location);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                wb=RDatabase.getInstance(getApplicationContext()).weatherDAO().getCity();
+                DownloadData(location);
+            }
+        }).start();
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -154,6 +161,7 @@ public class RequestService extends Service {
                                  w.setWeath(nw);
                                  w.setWind(wind);
                                  w.setPres(pres);
+                                 w.setPref(wb.get(i).getPref());
 
                                 new Thread(new Runnable() {
                                     @Override
@@ -161,16 +169,7 @@ public class RequestService extends Service {
                                         RDatabase.getInstance(getApplicationContext()).weatherDAO().update(w);
                                     }
                                 }).start();
-
                             }
-
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    wb = RDatabase.getInstance(getApplicationContext()).weatherDAO().getWeather();
-                                }
-                            }).start();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
